@@ -14,7 +14,8 @@ const PropertyDetails = ({ property }) => {
         <span className="font-medium">Landlord: </span>S Sahoo
       </div>
       <h3 className="text-lg font-semibold mt-4">Inspection Details</h3>
-      <textarea className="w-full p-2 border rounded mt-2" rows="4" placeholder="Enter inspection details..."></textarea>
+      <textarea className="w-full p-1 border rounded mt-2" rows="2" placeholder="Enter inspection details..."></textarea>
+
       <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
         Submit
       </button>

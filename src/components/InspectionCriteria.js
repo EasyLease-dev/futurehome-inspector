@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Layout from '../components/Layout';
 const inspectionCriteriaData = [
   {
     title: 'Safety Inspection',
@@ -44,6 +44,7 @@ const InspectionCriteria = () => {
   };
 
   return (
+    <Layout>
     <div className="relative w-full max-w-4xl mx-auto p-4 md:p-6"> {/* Adjusted padding for mobile */}
       <div className="bg-white rounded-lg shadow-lg p-6 md:p-8 flex flex-col items-center"> {/* Adjusted padding for mobile */}
         <img
@@ -78,6 +79,7 @@ const InspectionCriteria = () => {
         ))}
       </div>
     </div>
+    </Layout>
   );
 };
 

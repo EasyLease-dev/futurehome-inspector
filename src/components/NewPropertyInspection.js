@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Layout from '../components/Layout';
 const NewPropertyInspection = () => {
   const [selectedProperty, setSelectedProperty] = useState('');
   const [formType, setFormType] = useState('');
@@ -82,8 +82,9 @@ const NewPropertyInspection = () => {
   };
 
   return (
+    <Layout>
     <div>
-      <h1 className="text-2xl mb-4">New Property Inspection</h1>
+      
       <div className="mb-4">
         <label htmlFor="property" className="block text-sm font-medium text-gray-700">Select Property</label>
         <select
@@ -422,6 +423,7 @@ const NewPropertyInspection = () => {
         </form>
       )}
     </div>
+    </Layout>
   );
 };
 

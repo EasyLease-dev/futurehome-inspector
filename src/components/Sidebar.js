@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
-import { FaBars, FaTimes, FaUserCircle, FaTachometerAlt, FaClipboardList, FaClipboardCheck, FaSignOutAlt } from 'react-icons/fa';
+import {
+  FaBars,
+  FaTimes,
+  FaTachometerAlt,
+  FaClipboardList,
+  FaClipboardCheck,
+  FaSignOutAlt,
+} from 'react-icons/fa';
 
 const Sidebar = ({ isOpen, toggleSidebar, onSelectSection, onLogout, activeSection }) => {
   const [showProfileOverlay, setShowProfileOverlay] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [inspectorDetails, setInspectorDetails] = useState({
     name: 'S Sahoo',
-    email: 'sahoo@example.com'
+    email: 'sahoo@example.com',
+    photo: 'https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250', 
   });
   const [formDetails, setFormDetails] = useState(inspectorDetails);
 
@@ -23,7 +31,7 @@ const Sidebar = ({ isOpen, toggleSidebar, onSelectSection, onLogout, activeSecti
     const { name, value } = e.target;
     setFormDetails({
       ...formDetails,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -39,7 +47,12 @@ const Sidebar = ({ isOpen, toggleSidebar, onSelectSection, onLogout, activeSecti
         {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
       </button>
       <div className="mt-4 flex justify-center">
-        <FaUserCircle size={48} onClick={handleProfileClick} className="cursor-pointer" />
+        <img
+          src={inspectorDetails.photo}
+          alt="Inspector"
+          onClick={handleProfileClick}
+          className="cursor-pointer w-12 h-12 rounded-full object-cover"
+        />
       </div>
       <div className="mt-4 flex flex-col items-start">
         <button
@@ -73,8 +86,8 @@ const Sidebar = ({ isOpen, toggleSidebar, onSelectSection, onLogout, activeSecti
       </button>
       {showProfileOverlay && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
-          <div className="bg-white p-4 rounded-lg shadow-md text-black w-80">
-            <h2 className="text-xl font-semibold mb-2">Inspector Details</h2>
+          <div className="bg-white p-6 rounded-lg shadow-lg text-black w-96">
+            <h2 className="text-2xl font-semibold mb-4">Inspector Details</h2>
             {isEditing ? (
               <form onSubmit={handleFormSubmit}>
                 <div className="mb-4">
@@ -113,8 +126,13 @@ const Sidebar = ({ isOpen, toggleSidebar, onSelectSection, onLogout, activeSecti
               </form>
             ) : (
               <>
-                <p>Name: {inspectorDetails.name}</p>
-                <p>Email: {inspectorDetails.email}</p>
+                <img
+                  src={inspectorDetails.photo}
+                  alt="Inspector"
+                  className="w-24 h-24 rounded-full object-cover mb-4 mx-auto"
+                />
+                <p className="text-lg mb-2"><strong>Name:</strong> {inspectorDetails.name}</p>
+                <p className="text-lg mb-4"><strong>Email:</strong> {inspectorDetails.email}</p>
                 <button
                   onClick={handleEditClick}
                   className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mr-2"
